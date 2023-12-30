@@ -1,25 +1,28 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 const customerSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
-  pastTreatments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Treatment'
-  }],
-  currentTreatments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Treatment'
-  }],
+  name: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  Treatments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Treatment",
+    },
+  ],
   paymentDetails: {
-    advancePaid: Number,
-    remainingAmount: Number,
-    totalAmount: Number
-  }
+    amountCalculated: Number,
+    amountPaid: Number,
+    dues: Number,
+  },
 });
-
-const Customer = mongoose.model('Customer', customerSchema);
-module.exports = Customer;
+module.exports = mongoose.model("customer", customerSchema);

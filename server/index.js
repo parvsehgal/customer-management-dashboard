@@ -1,18 +1,15 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
+const express = require("express");
+require("dotenv").config();
+const dbConnect = require("./config/database");
+const customerRoutes = require("./routes/customerRoutes");
 
 const app = express();
-app.use(cors())
-app.use(bodyParser.json());
-const PORT = process.env.PORT || 3000;
+app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/beautyParlourDB', {useNewUrlParser: true,useUnifiedTopology: true})
-  .then(() => console.log('Database connected successfully'))
-  .catch(e => console.error('Database connection error:', e));
+app.use("/api/v1", customerRoutes);
 
-app.use('/customer', require('./Routes/Customers'));
+app.listen(process.env.PORT, () => {
+  console.log("server instantiated");
+});
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+dbConnect();

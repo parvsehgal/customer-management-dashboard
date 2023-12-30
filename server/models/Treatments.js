@@ -1,11 +1,14 @@
-//Services and Treatments.
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const treatmentSchema = new mongoose.Schema({
-  description: String,
-  date: { type: Date, default: Date.now },
-  cost: Number
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
-const Treatment = mongoose.model('Treatment', treatmentSchema);
-module.exports = Treatment;
+module.exports = mongoose.model("Treatment", treatmentSchema);
