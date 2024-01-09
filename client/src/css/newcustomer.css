@@ -1,0 +1,52 @@
+.wrapper {
+  height: 150vh;
+  width: 150vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(213, 140, 255, 0.961);
+}
+.formContainer {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-left: -150px;
+}
+.heading {
+  margin-top: -150px;
+  margin-left: -100px;
+}
+.window {
+  height: 120px;
+  width: 200px;
+  background-color: rgba(223, 82, 82, 0.979);
+  margin-left: 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin: 5px;
+  color: white;
+}
+.choose {
+  height: 300px;
+  width: 400px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  flex-direction: column;
+}
+.head {
+  margin-left: 5px;
+}
+.choosed {
+}
+.bl {
+  background-color: rgba(77, 77, 216, 0.947);
+  padding: 10px;
+  margin-top: 3px;
+  height: 100;
+  border-radius: 8px;
+  color: white;
+}
