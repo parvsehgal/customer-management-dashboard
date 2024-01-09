@@ -3,16 +3,18 @@ const customerSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true,
-    unique: true,
   },
+
   name: {
     type: String,
     required: true,
   },
+
   date: {
     type: String,
     required: true,
   },
+
   Treatments: [
     {
       type: mongoose.Schema.Types.ObjectId,

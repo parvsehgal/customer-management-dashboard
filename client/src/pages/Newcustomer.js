@@ -6,6 +6,14 @@ export default function Newcustomer() {
   const [treatments, setTreatments] = useState([]);
   const [addedTreatments, setAdded] = useState([]);
 
+  const [formData, setFormData] = useState({
+    PhoneNumber: "",
+    Name: "",
+    Date: "",
+    AmountPaid: "",
+    totalTreatments: [],
+  });
+
   const getData = async () => {
     const { data } = await axios.get(
       "http://localhost:4000/api/v1/getTreatments"
@@ -19,6 +27,10 @@ export default function Newcustomer() {
 
   function addTreatment(name, price) {
     const intermediate = [...addedTreatments, [name, price]];
+    setFormData((prevData) => ({
+      ...prevData,
+      totalTreatments: intermediate,
+    }));
     setAdded(intermediate);
     console.log(intermediate);
   }
@@ -27,13 +39,18 @@ export default function Newcustomer() {
     let filtered = addedTreatments.filter((data) => {
       return data !== value;
     });
+
+    setFormData((prevData) => ({
+      ...prevData,
+      totalTreatments: filtered,
+    }));
     setAdded(filtered);
   }
 
   const viewAdded = addedTreatments.map((data) => {
     return (
       <div className="bl">
-        {data[0]} {data[1]}
+        {data[0]} Rs. {data[1]}
         <button
           onClick={() => {
             removeTreatment(data);
@@ -47,7 +64,7 @@ export default function Newcustomer() {
 
   const toDisplay = treatments.map((data, index) => {
     return (
-      <div className="window">
+      <div key={index} className="window">
         <p>{data.name}</p>
         <p>Rs.{data.price}</p>
         <button
@@ -61,12 +78,44 @@ export default function Newcustomer() {
     );
   });
 
+  const inputHandler = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setFormData((prevData) => ({
+      ...prevData,
+      totalTreatments: addedTreatments,
+    }));
+    console.log(formData);
+  };
+
+  const uploadData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/v1/newCustomer",
+        formData
+      );
+      console.log(response);
+      if (response.status == 200) {
+        alert("Data uploaded successfully!");
+      } else {
+        alert("response not right!!!");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed. Please try again.");
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (addedTreatments == "") {
-      alert("no treatments added");
+      alert("NO TREATMENTS ADDED");
       return;
     }
+    uploadData();
   };
 
   return (
@@ -74,9 +123,18 @@ export default function Newcustomer() {
       <h2 className="heading">Add Record</h2>
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <input placeholder="PhoneNumber"></input>
-          <input placeholder="Name"></input>
-          <input placeholder="Date"></input>
+          <input
+            placeholder="PhoneNumber"
+            name="PhoneNumber"
+            onChange={inputHandler}
+          ></input>
+          <input placeholder="Name" name="Name" onChange={inputHandler}></input>
+          <input placeholder="Date" name="Date" onChange={inputHandler}></input>
+          <input
+            placeholder="AmountPaid"
+            name="AmountPaid"
+            onChange={inputHandler}
+          ></input>
           <button type="submit">Submit</button>
         </form>
       </div>
