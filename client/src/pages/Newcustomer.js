@@ -11,6 +11,7 @@ export default function Newcustomer() {
     Name: "",
     Date: "",
     AmountPaid: "",
+    AmountCalculated: "",
     totalTreatments: [],
   });
 
@@ -129,7 +130,17 @@ export default function Newcustomer() {
             onChange={inputHandler}
           ></input>
           <input placeholder="Name" name="Name" onChange={inputHandler}></input>
-          <input placeholder="Date" name="Date" onChange={inputHandler}></input>
+          <input
+            placeholder="Date"
+            name="Date"
+            type="date"
+            onChange={inputHandler}
+          ></input>
+          <input
+            placeholder="AmountCalculated"
+            name="AmountCalculated"
+            onChange={inputHandler}
+          ></input>
           <input
             placeholder="AmountPaid"
             name="AmountPaid"

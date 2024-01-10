@@ -17,8 +17,7 @@ const customerSchema = new mongoose.Schema({
 
   Treatments: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Treatment",
+      type: Array,
     },
   ],
   paymentDetails: {
