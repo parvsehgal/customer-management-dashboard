@@ -1,0 +1,24 @@
+.bg {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(213, 140, 255, 0.961);
+  height: 100vh;
+}
+.b {
+  background-color: rgb(73, 205, 73);
+  margin-top: 5px;
+  width: 700px;
+  height: 500px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.dues {
+  margin-left: -100px;
+  margin-top: 20px;
+  background-color: rgba(234, 56, 56, 0.941);
+  padding: 10px;
+  border-radius: 8px;
+}

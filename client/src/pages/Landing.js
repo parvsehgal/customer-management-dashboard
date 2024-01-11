@@ -21,6 +21,15 @@ export default function Landing() {
         >
           New Customer
         </div>
+
+        <div
+          className="common new"
+          onClick={() => {
+            navigator("/checkDues");
+          }}
+        >
+          Check Balance
+        </div>
       </div>
     </div>
   );

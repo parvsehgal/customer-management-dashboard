@@ -1,0 +1,42 @@
+.back {
+  height: 1000vh;
+  width: 100vw;
+  background-color: rgba(213, 140, 255, 0.961);
+  display: flex;
+  justify-content: center;
+}
+.blueDiv {
+  background-color: rgba(77, 77, 216, 0.947);
+  height: 1000vh;
+  width: 900px;
+  color: white;
+  border-radius: 8px;
+}
+.stuff {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.entity {
+  background-color: rgba(223, 82, 82, 0.979);
+  height: 120px;
+  width: 1000px;
+  margin-top: 3px;
+  padding: 5px;
+  border-radius: 8px;
+}
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.treat {
+  display: flex;
+  flex-direction: column;
+}
+.mar {
+  margin-top: -300px;
+}
