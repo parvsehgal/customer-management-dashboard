@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use("/api/v1", customerRoutes);
 
-app.listen(process.env.PORT, () => {
+app.listen(4000, () => {
   console.log("server instantiated");
 });
 
