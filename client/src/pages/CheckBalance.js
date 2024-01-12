@@ -12,9 +12,22 @@ export default function CheckBalance() {
         phoneNumber: phoneNumber,
       }
     );
+    if (data == null) {
+      return;
+    }
     setBalance([data]);
-    console.log(balance);
   };
+
+  async function deleteDues(data) {
+    const res = await axios.post("http://localhost:4000/api/v1/deleteBalance", {
+      phoneNumber: data.phoneNumber,
+    });
+    if (res.status == 200) {
+      alert("balance info deleted");
+    } else {
+      alert("ERROR deleting balance information");
+    }
+  }
 
   const changeHandler = (event) => {
     const num = event.target.value;
@@ -30,7 +43,13 @@ export default function CheckBalance() {
         <div>Name: {data.name}</div>
         <div>Advance: {data.advance}</div>
         <div>Debt: {data.debt}</div>
-        <button>Delete</button>
+        <button
+          onClick={() => {
+            deleteDues(data);
+          }}
+        >
+          Delete
+        </button>
       </div>
     );
   });

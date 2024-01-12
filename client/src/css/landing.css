@@ -45,3 +45,11 @@
 .entity {
   background-color: azure;
 }
+.yell {
+  background-color: rgb(157, 96, 193);
+}
+
+.yell:hover {
+  transform: translate(0, -5px);
+  transition: all 0.3s ease-out;
+}

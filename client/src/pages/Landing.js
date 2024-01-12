@@ -30,6 +30,12 @@ export default function Landing() {
         >
           Check Balance
         </div>
+        <div
+          className="common yell"
+          onClick={() => navigator("/makeTreatment")}
+        >
+          Add Treatment
+        </div>
       </div>
     </div>
   );

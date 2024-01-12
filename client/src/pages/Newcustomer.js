@@ -6,6 +6,8 @@ export default function Newcustomer() {
   const [treatments, setTreatments] = useState([]);
   const [addedTreatments, setAdded] = useState([]);
 
+  const [total, setTotal] = useState(0);
+
   const [formData, setFormData] = useState({
     PhoneNumber: "",
     Name: "",
@@ -34,18 +36,27 @@ export default function Newcustomer() {
     }));
     setAdded(intermediate);
     console.log(intermediate);
+    let sum = 0;
+    for (let i = 0; i < intermediate.length; i++) {
+      sum += intermediate[i][1];
+    }
+    setTotal(sum);
   }
 
   function removeTreatment(value) {
     let filtered = addedTreatments.filter((data) => {
       return data !== value;
     });
-
     setFormData((prevData) => ({
       ...prevData,
       totalTreatments: filtered,
     }));
     setAdded(filtered);
+    let sum = 0;
+    for (let i = 0; i < filtered.length; i++) {
+      sum += filtered[i][1];
+    }
+    setTotal(sum);
   }
 
   const viewAdded = addedTreatments.map((data) => {
@@ -121,8 +132,8 @@ export default function Newcustomer() {
 
   return (
     <div className="wrapper">
-      <h2 className="heading">Add Record</h2>
       <div className="formContainer">
+        <h2 className="heading">Add Record</h2>
         <form onSubmit={handleSubmit}>
           <input
             placeholder="PhoneNumber"
@@ -154,6 +165,7 @@ export default function Newcustomer() {
         {toDisplay}
       </div>
       <div className="choosed">
+        <h3>total = {total}</h3>
         <h3>treatments added</h3>
         {viewAdded}
       </div>
