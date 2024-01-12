@@ -16,6 +16,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/v1", customerRoutes);
+app.use("/test", (req, res) => res.send("hello its working"));
 
 app.listen(4000, () => {
   console.log("server instantiated");
